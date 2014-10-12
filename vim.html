@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vim Intro</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+	  li,ul{line-height:200%}
+    </style>
+  </head>
+  <body>
+<textarea id="source">
+
+class: center, middle
+
+
+# Vim Intro
+### No hands on mouse ever again!
+
+***
+
+##### mushr00m 蔡維哲 @CCCA
+##### http://mushr00m.nba.nctu.edu.tw:8000/vim.html
+###### The slide is licensed under CC-BY-SA-NC
+---
+# Special Thanks
+***
+### Some reference from
+#### (依字母)
+- dv
+- iblis
+- pi314
+---
+
+# Brief
+***
+ * What is vim?
+ * Why vim?
+ * Basic usage
+ * More about usage
+ * Tips
+ * vimrc *
+ * Hotkeys *
+ * Bundle makes better *
+
+---
+
+# What is vim?
+***
+-	vim是一個文字編輯器，改良自vi,為VI-iMproved
+-	擁有高度的可調性和擴充性，可依個人習慣調整(神!)
+-	目前unix-like 系統廣泛內建的文字編輯器
+-	請幫助烏干達的可憐孩童!
+
+---
+
+# Why vim?
+### what so special
+***
+
+-	強大的編輯功能，很多神奇的魔法
+-	不需要滑鼠，按少少的按鍵就能解決所有的事，手離不開鍵盤
+-	幾乎所有事情都有快捷鍵，輕鬆達成~~宅宅~~的夢想(懶)
+-	unix-like系統常見，省資源，常用在server上(不用圖形介面)
+-	在許多unix-like環境預設會呼叫他，如crontab,visudo
+-	彈性大，可以自訂很多快捷鍵、function、依需求外掛插件
+---
+# Let's go
+***
+-	登入工作站
+
+	vim  
+	vim [file]
+---
+# Basic usage
+#### vim有三個常用的「模式」，就像車子有「檔」
+***
+-	一般模式(Normal)
+	+ 一打開vim就是一般模式
+	+ 可以移動、刪除、剪貼，但不能打字
+	+ 很多事要在一般模式完成
+-	編輯模式(Insert)
+	+ 用來打字，按"ESC"回到一般模式
+-	指令模式
+	+ 用來輸指令，按"ESC"回到一般模式
+	+ 搜尋資料、讀檔、存檔、取代等
+---
+# Basic usage
+### Where am I ?
+***
+- 左下角會顯示"Normal,Insert"
+- 或是"--插入--"
+- 或是什麼都沒有
+- 多按幾次ESC就會回到一般模式
+---
+# Insert something
+***
+- 一般模式下按 i
+	+ i 代表 insert
+	+ 輸入到游標位置
+- 一般模式下按 a
+	+ a 代表append
+	+ 輸入到游標的後面一個位置  
+- 就像平常在輸入一樣
+- easy!
+- 在做別的事前…先按ESC回到Normal
+---
+# Move!!
+#### 移動我的游標
+***
+- 方向鍵
+- h j k l
+	+ 分別代表 左 下 上 右
+	+ 這大概是最難習慣的地方
+	+ 讓手保持在盲打鍵位上，別亂跑
+---
+# Move!! Faster
+#### 檔案好長…可以再快一點嗎
+***
+- gg
+	+ 跑到檔案開頭
+	+ go go (?
+- G
+	+ 跑到檔案最下面
+- 可配合行數，跳過去
+	+ 30gg
+	+ 30G
+---
+# ~~Delete it~~
+***
+- x
+	+ delete，把游標所在的字元砍掉
+	+ 如果游標在行尾，會變backspace
+- X
+	+ backspace
+- dd
+	+ 刪一整行
+	+ 不要xxxxxxxxx
+---
+# Undo/Redo
+***
+- 回到過去
+	+ u
+	+代表 undo
+	+ 復原
+- 還是不要好了
+	+ Ctrl+r
+	+ 代表redo
+	+ 為什麼不用r?，因為r有別的任務
+---
+# Write and Quit
+#### 打完了，存檔收工
+***
+- 一般模式下按 : 進入指令模式，左下角有一個冒號
+- :w 可以存檔
+	+ w代表write
+	+ w [檔名] 來給予檔名
+- :q 可以離開
+	+ q 代表 quit
+- :wq 就是存檔後離開，加上 ! 代表強制執行，:q!  沒存檔就離開
+- ZZ
+	+ 如果沒動過檔案直接離開，動過的話則存檔
+---
+# End of Basic usage
+### Review
+***
+- vim有三個常用模式
+- i,a 輸入
+- h,j,k,l 移動
+- gg,G 移快點
+- Esc
+- x,X,dd 刪東西
+- u,Ctrl-r 復原
+- :w , :q , :wq , :q! 檔案操作
+---
+# More about usage
+### 接下來會一次講很多東西
+***
+#### 盡量用單字和大小寫來記按鍵，不用死背
+#### 動手做更不會忘，忘了也沒關係，回來查
+#### tips:一個vim按鍵，通常"大小寫"功能類似
+
+---
+# More about Insert
+***
+- I
+	+ 寫到一行的最前面
+- A
+	+ 寫到一行的最後面(常用)
+- 我想在文中插一行空白
+	+ 把游標移到行尾再ENTER (不潮!)
+	+ o 游標下開一行，並跳過去
+	+ O 游標上開一行，並跳過去
+	+ o 代表open，開一新行
+---
+# More about ~~Delete~~
+***
+- dw
+	+ delete word，刪除一個單字
+- cw
+	+ change word，更改一個單字
+- di ([{"'
+	+ 刪除各種括號裡的字
+	+ delete in
+	+ di( = dib , di{ =diB , b=bracket
+	+ ci也能用
+- da 
+	+ 連括號一起刪
+
+---
+# Copy and paste
+***
+- y
+	+ 複製選取的字 (配合反白…等等說XD)
+	+ y 代表yank(抽出)
+- yy
+	+ 複製一整行
+- p (小p)
+	+ paste，貼上，貼在游標後面
+- P (大P)
+	+ 貼在游標前面
+---
+# Move!! More Faster
+***
+- w
+	+ word，一次往下跳一個單字
+- b
+	+ back，往回跳一個單字
+- e
+	+ end，跳到一個單字的結尾
+---
+# Find and Move
+***
+- f
+	+ find，往右邊找，搜尋特定字母
+	+ 再按你想要的字母，就會跳過去
+- F
+	+ 往左邊找，搜尋特定字母
+- Example
+	+ CCCA is good
+	+ 按下 fg 就會跳到g的位置
+---
+# Search
+***
+- /
+	+ 搜尋一串字
+	+ 支援正規表示法
+	+ /CCCA 在文件裡搜尋CCCA這串字
+- 如果有多個結果
+	+ 按 n 可以找下一個
+	+ 按 N 可以找上一個
+---
+# Replace
+***
+- r 
+	+ 取代游標上的字
+	+ r+[你要取代的字]
+- R
+	+ 取代模式
+	+ 可以開始打字，會把原本的字取代掉
+	+ 就是鍵盤上的inster鍵
+---
+# Block mode
+#### 神奇的反白
+***
+- 小寫v
+	+ 就是普通的反白
+- 大寫V
+	+ 反白一整行
+- Ctrl-v
+	+ 方塊反白
+- 配合 y 複製和 d 刪除等，也可以配合插入，一次多行
+- o 和 O 可以調整固定點
+---
+# Turn page
+#### move faster faster
+***
+- 一次翻半頁
+	+ Ctrl-d  往下，d means down
+	+ Ctrl-u  往上，u means down
+- 一次翻整頁
+	+ Ctrl-f  往下，f means ~~face~~ forward
+	+ Ctrl-b  往上，b means ~~book~~ backward
+---
+# End of more about vim
+### Let's review
+***
+- I A 輸入
+- dw cw di( 刪除
+- y yy p P 複製和貼上
+- w b e 在行中移動
+- f F / 搜尋
+- R r 取代
+- v V Ctrl-v 反白
+- Ctrl+ dufb 翻頁
+---
+# Tips
+***
+### Ready to learn more
+---
+# Join
+***
+- J
+	+ Join
+	+ 把下面那行字拉上來
+	+ 常用
+---
+# Do more in once
+#### 數字+指令
+***
+- 向下複製10行
+	+ 10yy
+- 貼上100次
+	+ 100p
+- 往下刪5行
+	+ 5dd
+- 游標下移5行
+	+ 5j
+- 基本上什麼都可以加數字
+---
+# Do more in once
+#### 配合方向
+***
+- $代表行尾，^代表有字行首,0代表真行首
+- d$ (D) ，從游標刪到行尾
+- d^ ，從游標刪到行首
+- 5dj，往下刪5行
+- 5dk，行上刪5行
+- 很多都可以配方向
+---
+# Multi-files
+### in Tabs 
+***
+- :tabe [file]
+	+ tab edit
+	+ 在上面開分頁
+- :tabn
+	+ 下一個tab，n 代表 next, 同 gt (go tab)
+- :tabp
+	+ 上通個tab，p 代表previous， 同 gT
+---
+# Multi-files
+### in Split Screen
+***
+- :sp
+	+ 水平分割
+	+ split，分割畫面
+- :vs
+	+ 垂直分割
+	+ Vertical Split
+	- `<Ctrl> + w + 方向鍵`
+	+ 在分割窗中移動，方向鍵是h j k l
+---
+# Multi-files
+***
+- 開了一堆檔…想要一次存
+	+ 請不要:tabn :wq :tabn :wq ...
+- :wa
+	+ write all
+- :qa
+	+ quit all
+---
+# Fold
+### Zip it
+***
+- 可依不同語言設定不同indent (詳見reference)
+- 把部份內容折起來
+	+ za toggle fold
+	+ zo (zip open) 打開折疊
+	+ zc (zip close) 關掉折疊
+	+ zm 關掉全部的折疊
+	+ zx 只剩目前這個，其它關掉
+---
+# Tips
+### Review
+***
+- J 把下面拉上來
+- 數字+指令
+- 配合方向鍵
+- :tabe :tabp :tabn 分頁編輯
+- :sp :vs `<Ctrl-w> + hjkl` 分割畫面
+- :wa qa 一次存/離多檔
+---
+# vimrc
+#### 設定檔 makes you happy
+***
+- 提供環境設定、快速鍵設定等個人化功能
+- 寫好一份，換機器時帶著走
+- 搭配plugin管理器，plugin 的設定內容
+- 家目錄下的.vimrc
+- ~/.vimrc
+- 可以先偷一份別人的
+---
+# General Settings
+***
+- `syntax on` 		開啟關鍵字上色
+- `set number` 		開始行號(nu)
+- `set autoindent`	自動縮排(ai)
+- `set tabstop=4`		將tab設成4個空白
+- `set ignorecase`	search時不分大小寫(ic)
+- `set imsearch`		即時搜尋(is)
+- `set scrolloff=4`	留4行
+- `set cursorline`	游標線
+- `set showcmd`		在右下角顯示正在輸的指令
+- `set showmode`		左下角的狀態提示
+---
+# Keymaps
+### 語法：map [按鍵] [指令]
+***
+- noremap 防止recursion
+- 分模式map
+	+ imap 用在insert mode
+	+ nmap 用在normal mode
+	+ cmap 用在command mode
+	+ map  到處都可以用
+- 組合鍵，系統鍵
+	+ 請用<>包起來
+	+ `<Ctrl-a>`
+	+ `<ESC>`
+---
+# Keymaps
+### Examples
+***
+- 檔案(按F12存檔，按qq離開)
+	+ `map <F12> <ESC>:w<CR>`
+	+ `map qq <ESC>:q<CR>`
+- 多檔編輯
+	+ `nnoremap tt :tabe<SPACE>`
+	+ `nnoremap tn :tabnext<CR>`
+	+ `nnoremap tp :tabprevious<CR>`
+---
+# Keymaps
+### There are still more!!!
+***
+- Find them yourself
+- Open compiler
+- Run the code
+- Split window control
+---
+# Bundle makes better
+### Plugin for vim
+***
+- vundle
+	+ plugin manager
+	+ easy and convenient to use
+	+ manage all settings in vimrc
+	+ auto install,auto clean
+- https://github.com/gmarik/Vundle.vim
+---
+# Bundle makes better
+### For coding
+***
+- code completion
+	+ Shougo/neocomplete
+	+ Shougo/vimproc
+- C/C++ complettion
+	+ osyo-manga/vim-marching
+- Python completion
+	+ davidhalter/jedi-vim
+- Syntax check
+	+ scrooloose/syntastic
+---
+# Bundle makes better
+### For better usage
+***
+- bling/vim-airline
+- scrooloose/nerdtree
+- majutsushi/tagbar
+- matchit
+- matchtag
+---
+# Reference
+***
+- Vimtutor
+	+ 玩完RPG(?)遊戲你就會了
+- 有關折疊
+	+ iblis筆記：http://cnmc24.hs.ntnu.edu.tw/~iblis17/wiki/index.php?editor%2Fvim
+- 設定檔
+	+ inherited and modified from Dv，thank him so much
+	+ http://mushr00m.nba.nctu.edu.tw:8000/.vimrc
+- 要多多練習
+	+ 或來社辦聊聊
+---
+class: center, middle
+#Thanks
+
+<div></div>
+
+
+
+</textarea>
+<script src="http://gnab.github.io/remark/downloads/remark-latest.min.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
